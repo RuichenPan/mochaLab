@@ -48,6 +48,11 @@ class Catalogue {
       .reduce((acc, p) => acc + 1, 0);
     return noProductsAdded;
   }
+  search(criteria){
+const cheapProduct = { type: "Cheap", productIds: [] };
+cheapProduct.productIds=this.products.filter((p) => p.price<25.01).map((p)=>p.id)
+return cheapProduct
+}
 }
 
 module.exports = Catalogue;
