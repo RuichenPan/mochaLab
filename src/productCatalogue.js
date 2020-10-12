@@ -57,6 +57,8 @@ class Catalogue {
     }else if (keys[0]==="keyword"){
       cheapProduct.productIds=this.products.filter((p) => p.name.search(criteria.keyword)>=0).map((p)=>p.id)
       return cheapProduct
+    } else{
+      throw new Error("Bad search")
     }
 
 }

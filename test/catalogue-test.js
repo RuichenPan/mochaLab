@@ -106,6 +106,9 @@ describe("Catalogue", () => {
             const result = cat.search({ keyword: 'sho' });
             expect(result.productIds).to.have.lengthOf(0);
         });
+        it("should throw'Bad search'if the criteria object has neither key ",function(){
+            expect(() => cat.search({name:"name"})).to.throw("Bad search");
+        })
     });
    
 });
