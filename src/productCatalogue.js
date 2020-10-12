@@ -49,9 +49,16 @@ class Catalogue {
     return noProductsAdded;
   }
   search(criteria){
-const cheapProduct = { type: "Cheap", productIds: [] };
-cheapProduct.productIds=this.products.filter((p) => p.price<25.01).map((p)=>p.id)
-return cheapProduct
+    const keys=Object.keys(criteria);
+    const cheapProduct = { type: "Cheap", productIds: [] };
+    if(keys[0]==="price"){
+      cheapProduct.productIds=this.products.filter((p) => p.price<25.01).map((p)=>p.id)
+      return cheapProduct
+    }else if (keys[0]==="keyword"){
+      cheapProduct.productIds=this.products.filter((p) => p.name.search(criteria.keyword)>=0).map((p)=>p.id)
+      return cheapProduct
+    }
+
 }
 }
 

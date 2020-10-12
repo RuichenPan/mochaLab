@@ -97,11 +97,17 @@ describe("Catalogue", () => {
     }); 
     
     describe("search", function () {
-    it("should return products cheaper than €25.01", function () {
-        const result = cat.search({ price: 25.00});
-        expect(result.productIds).to.have.lengthOf(3);
-        expect(result.productIds).to.have.members(["A123", "A124", "A125"]);
+        it("should return products cheaper than €25.01", function () {
+            const result = cat.search({ price: 25.00});
+            expect(result.productIds).to.have.lengthOf(3);
+            expect(result.productIds).to.have.members(["A123", "A124", "A125"]);
+        });
+        it("should return products with 'sho' in the name (e.g. shoes, shoulder bag).", function () {
+            const result = cat.search({ keyword: 'sho' });
+            expect(result.productIds).to.have.lengthOf(0);
+        });
     });
-    });
+   
 });
+
    
